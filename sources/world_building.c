@@ -10,6 +10,7 @@ int	terminate(char *error_msg, int exit_code, int fd)
 		while (++i < strlen(error_msg))
 			write(fd, &error_msg[i], 1);
 	}
+	write(fd, "\n", 1);
 	exit(exit_code);
 }
 
