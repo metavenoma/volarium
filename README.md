@@ -10,7 +10,7 @@
 		- all  
 		- tests  
 		- objs_dir  
-		- DNA_tests 
+		- DNA_tests  
 		- clean  
 		- tests_clean  
 		- fclean  
