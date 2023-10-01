@@ -58,7 +58,7 @@ t_world	**create_world(int x, int y)
 	if (!world)
 		return (NULL);
 	i = -1;
-	while (++i < x)
+	while (++i < y)
 	{
 		world[i] = (t_world *)malloc(sizeof(t_world) * x);
 		if (!world[i])
@@ -74,25 +74,32 @@ t_world	**create_world(int x, int y)
 int	main(int argc, char **argv)
 {
 	t_world	**world;
+	size_t	len;
 
+	len = strlen(argv[1]);
 	if (argc != 3)
-		return (1);
-	for (size_t i = 0; i < strlen(argv[1]); i++) {
+		terminate("Args must be two integers with Width and Height values", 2, 2);
+	for (size_t i = 0; i < len; i++)
+	{
 		if (argv[1][i] < '0' || argv[1][i] > '9')
-			terminate("Args must be two integers with Width and Height values", 2, 2);
+			terminate("Args must be two integers with Width and Height values",
+					2, 2);
 	}
-	for (size_t i = 0; i < strlen(argv[2]); i++) {
-		if (argv[1][i] < '0' || argv[2][i] > '9')
-			terminate("Args must be two integers with Width and Height values", 2, 2);
+	len = strlen(argv[2]);
+	for (size_t i = 0; i < len; i++)
+	{
+		if (argv[2][i] < '0' || argv[2][i] > '9')
+			terminate("Args must be two integers with Width and Height values",
+					2, 2);
 	}
 	int x = atoi(argv[1]);
 	int y = atoi(argv[2]);
 	world = create_world(x, y);
-	for (int i = 0; i < y; i++) {
-		for (int j = 0; j < x; j++) {
-			printf("x: %i | y: %i\n", j, i);
-		}
-	}
+//	for (int i = 0; i < y; i++) {
+//		for (int j = 0; j < x; j++) {
+//			printf("x: %i | y: %i\n", j, i);
+//		}
+//	}
 	terminate_world(world, y);
 	return (0);
 }
